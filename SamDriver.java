@@ -32,7 +32,7 @@ public class Driver implements Directions {
 
     String wrldName = "basicRoom.wld";
 
-		World.readWorld(wrldName);
+	World.readWorld(wrldName);
     World.setVisible(true);
 	World.setDelay(5);
 
@@ -47,13 +47,8 @@ public class Driver implements Directions {
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
 			
-		if (roomba.facingEast() == true && roomba.frontIsClear() == false)
-		{
-			roomba.turnLeft();
-			roomba.move();
-			roomba.turnLeft();}
-			else
-			{
+	for (int i = 1; i <= 100; i++)
+	{
 				while(roomba.frontIsClear())
 			{
 				while(roomba.nextToABeeper())
@@ -63,8 +58,33 @@ public class Driver implements Directions {
 				roomba.move();
 			}
 
+	if (roomba.facingEast() == true && roomba.frontIsClear() == false)
+		{
+			roomba.turnLeft();
+			if (roomba.frontIsClear())
+			{
+				roomba.move();
+				roomba.turnLeft();
 			}
-		}
+			}
+				else if (roomba.facingWest() == true && roomba.frontIsClear() == false)
+				{
+						roomba.turnLeft();
+					roomba.turnLeft();
+					roomba.turnLeft();
+						if (roomba.frontIsClear())
+							{
+								roomba.move();
+								roomba.turnLeft();
+								roomba.turnLeft();
+								roomba.turnLeft();
+				
+							}
+		
+			}
+			}
+			
+		}}
 		
 		
 
@@ -79,16 +99,3 @@ public class Driver implements Directions {
 	 * in the pdf that describes the problem need to be displayed.  You can present
 	 * this info in the console (boring) or you can present using JOptionPane (cool!)
 	 */
-
-    
-
-
-
-
-
-
-
-
-  }
-
-
